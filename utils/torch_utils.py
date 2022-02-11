@@ -19,6 +19,11 @@ except ImportError:
     thop = None
 logger = logging.getLogger(__name__)
 
+def time_sync():
+    # pytorch-accurate time
+    if torch.cuda.is_available():
+        torch.cuda.synchronize()
+    return time.time()
 
 @contextmanager
 def torch_distributed_zero_first(local_rank: int):
