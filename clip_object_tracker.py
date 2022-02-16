@@ -246,7 +246,7 @@ def detect(save_img=False):
                 # run non-maxima supression
                 boxs = np.array([d.tlwh for d in detections])
                 scores = np.array([d.confidence for d in detections])
-                class_nums = np.array([d.class_num for d in detections])
+                class_nums = np.array([d.class_num.cpu() for d in detections])
                 indices = preprocessing.non_max_suppression(
                     boxs, class_nums, nms_max_overlap, scores)
                 detections = [detections[i] for i in indices]
