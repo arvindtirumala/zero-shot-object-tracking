@@ -269,6 +269,7 @@ def parse_model(d, ch):  # model_dict, input_channels(3)
         ch.append(c2)
     return nn.Sequential(*layers), sorted(save)
 
+DetectionModel = Model
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
